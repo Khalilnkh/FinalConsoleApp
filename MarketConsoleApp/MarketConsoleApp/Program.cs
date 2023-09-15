@@ -1,4 +1,6 @@
-﻿namespace MarketConsoleApp
+﻿using MarketConsoleApp.Helpers;
+
+namespace MarketConsoleApp
 {
     internal class Program
     {
@@ -24,9 +26,11 @@
 
                 switch (selectedOption)
                 {
-                    case 1:                      
+                    case 1:
+                        SubMenuHelper.DisplayOperationsOnProducts();
                         break;
-                    case 2:                       
+                    case 2:
+                        SubMenuHelper.DisplayOperationsOnSale();
                         break;
                     case 3:
                         Console.WriteLine("Bye!");
