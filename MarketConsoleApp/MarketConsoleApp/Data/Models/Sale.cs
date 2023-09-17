@@ -17,8 +17,9 @@ namespace MarketConsoleApp.Data.Models
             id++;
         }
         public decimal Amount { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public SaleItem SaleItem { get; set; } = null!;
+        public Product Product { get; set; } = null!;
 
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarketConsoleApp.Services.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,7 @@ namespace MarketConsoleApp.Helpers
                 switch (selectedOption)
                 {
                     case 1:
+                        MenuService.AddProduct();
                         break;
                     case 2:
                         break;
@@ -47,6 +49,7 @@ namespace MarketConsoleApp.Helpers
                 }
             } while (selectedOption != 0);
         }
+
 
         public static void DisplayOperationsOnSale()
         {
@@ -75,6 +78,7 @@ namespace MarketConsoleApp.Helpers
                 switch (selectedOption)
                 {
                     case 1:
+                        MenuService.AddSales();
                         break;
                     case 2:
                         break;
