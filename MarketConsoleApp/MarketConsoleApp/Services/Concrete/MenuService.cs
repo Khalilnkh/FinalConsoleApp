@@ -39,7 +39,7 @@ namespace MarketConsoleApp.Services.Concrete
 
                 int id = marketService.AddProduct(name, price, department, quantity);
 
-                Console.WriteLine($"Doctor with ID:{id} was created!");
+                Console.WriteLine($"Product with ID:{id} was created!");
             }
             catch (Exception ex)
             {
@@ -47,35 +47,71 @@ namespace MarketConsoleApp.Services.Concrete
             }
         }
 
-        public static void AddSales()
-        {
 
+        public static void UpdateProduct() 
+        {
             try
             {
-                Console.WriteLine("Enter products's ID:");
-                int productId = int.Parse(Console.ReadLine()!);
+                Console.WriteLine("Please enter new id of product");
+                int id = int.Parse(Console.ReadLine()!);
+                Console.WriteLine("Enter product's new name:");
+                string name = Console.ReadLine()!;
+                ValidateMyString(name);
+                static void ValidateMyString(string s)
 
-                Console.WriteLine("Enter SaleItem's ID:");
-                int saleItemId = int.Parse(Console.ReadLine()!);
+                {
+                    if (s.All(char.IsDigit))
+                    {
+                        throw new FormatException();
+                    }
+                }
+                Console.WriteLine("Enter product's new price:");
+                decimal price = decimal.Parse(Console.ReadLine()!);
+                Console.WriteLine("Enter products's new department:");
+                Department department = (Department)Enum.Parse(typeof(Department), Console.ReadLine()!);
+                Console.WriteLine("Enter products's new quantity :");
+                int quantity = int.Parse(Console.ReadLine()!);
+                marketService.UpdateProduct(id, name, price, department, quantity);
 
-                Console.WriteLine("Enter Sale's date (dd/MM/yyyy - HH:mm):");
-                var date = DateTime.ParseExact(Console.ReadLine()!, "(dd/MM/yyyy - HH:mm)", null);
+                Console.WriteLine($"Product with ID {id} was updated");
 
-                Console.WriteLine("Enter amount of sale:");
-                int amount = int.Parse(Console.ReadLine()!);
-
-                var id = marketService.AddSales(amount,date,saleItemId,productId);
-
-                Console.WriteLine($"Sale with ID:{id} was created!");
             }
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Error {ex.Message}"); 
             }
-
-
         }
+
+        //public static void AddSales()
+        //{
+
+        //    try
+        //    {
+        //        Console.WriteLine("Enter products's ID:");
+        //        int productId = int.Parse(Console.ReadLine()!);
+
+        //        Console.WriteLine("Enter SaleItem's ID:");
+        //        int saleItemId = int.Parse(Console.ReadLine()!);
+
+        //        Console.WriteLine("Enter Sale's date (dd/MM/yyyy - HH:mm):");
+        //        var date = DateTime.ParseExact(Console.ReadLine()!, "(dd/MM/yyyy - HH:mm)", null);
+
+        //        Console.WriteLine("Enter amount of sale:");
+        //        int amount = int.Parse(Console.ReadLine()!);
+
+        //        var id = marketService.AddSales(amount,date,saleItemId,productId);
+
+        //        Console.WriteLine($"Sale with ID:{id} was created!");
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        Console.WriteLine($"Error: {ex.Message}");
+        //    }
+
+
+        //}
 
     }
 }

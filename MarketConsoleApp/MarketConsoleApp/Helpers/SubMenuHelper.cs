@@ -38,6 +38,7 @@ namespace MarketConsoleApp.Helpers
                         MenuService.AddProduct();
                         break;
                     case 2:
+                        MenuService.UpdateProduct();
                         break;
                     case 3:
                         break;
@@ -78,7 +79,7 @@ namespace MarketConsoleApp.Helpers
                 switch (selectedOption)
                 {
                     case 1:
-                        MenuService.AddSales();
+                        //MenuService.AddSales();
                         break;
                     case 2:
                         break;

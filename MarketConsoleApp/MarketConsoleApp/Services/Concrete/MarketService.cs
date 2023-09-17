@@ -39,37 +39,67 @@ namespace MarketConsoleApp.Services.Concrete
             return product.Id;
         }
 
-        public int AddSales(decimal amount, DateTime date, int saleItemId, int productId)
+
+        public int UpdateProduct(int id, string name, decimal price, Department department, int quantity)
         {
-                     
-            if (amount < 0)
-                throw new Exception("Amount can't be 0 or less than 0!");
-            if (date < DateTime.Now)
-                throw new Exception("Sales can't be created in past!");          
-            var saleItem = _saleItems.FirstOrDefault(x => x.Id == saleItemId);
-            if (saleItem is null)
-                throw new Exception($"SalesItem with ID ${saleItem.Id}: was not found!");
-            var product = _products.FirstOrDefault(x => x.Id == productId);
-            if (product is null)
-                throw new Exception($"SalesItem with ID ${product.Id}: was not found!");
-
-            var sale = new Sale
-            {
-                Amount = amount,
-                Date = date,
-                SaleItem =saleItem,
-                Product=product,
-                
-            };
-
-            _sales.Add(sale);
-
             
-            return sale.Id;
+            
+                if (id < 0)
+                    throw new Exception("Id cant be less than 0");
+                if (string.IsNullOrWhiteSpace(name))
+                    throw new Exception("Name can't be empty!");
+                if (price < 0)
+                    throw new Exception("price cant be less than 0");
+                //if (string.isnullorempty(department.tostring()));
+                //throw new exception("department can't be empty!");
+                if (quantity < 0)
+                    throw new Exception("quantity cant be less than 0");
+                var product = _products.Find(x => x.Id == id);
+                if (product == null)
+                    throw new Exception($"Product with Id {id} can not found");
+
+                product.Name = name;
+                product.Price = price;
+                product.Department = department;
+                product.Quantity = quantity;
 
 
+                return product.Id;
+
+         
         }
 
-        
+        //public int AddSales(decimal amount, DateTime date, int saleItemId, int productId)
+        //{
+
+        //    if (amount < 0)
+        //        throw new Exception("Amount can't be 0 or less than 0!");
+        //    if (date < DateTime.Now)
+        //        throw new Exception("Sales can't be created in past!");          
+        //    var saleItem = _saleItems.FirstOrDefault(x => x.Id == saleItemId);
+        //    if (saleItem is null)
+        //        throw new Exception($"SalesItem with ID ${saleItem.Id}: was not found!");
+        //    var product = _products.FirstOrDefault(x => x.Id == productId);
+        //    if (product is null)
+        //        throw new Exception($"SalesItem with ID ${product.Id}: was not found!");
+
+        //    var sale = new Sale
+        //    {
+        //        Amount = amount,
+        //        Date = date,
+        //        SaleItem =saleItem,
+        //        Product=product,
+
+        //    };
+
+        //    _sales.Add(sale);
+
+
+        //    return sale.Id;
+
+
+        //}
+
+
     }
 }
