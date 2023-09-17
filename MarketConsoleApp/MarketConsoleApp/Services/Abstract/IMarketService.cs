@@ -12,13 +12,14 @@ namespace MarketConsoleApp.Services.Abstract
     {
         public int AddProduct(string name, decimal price, Department department, int quantity);
         public int UpdateProduct(int id, string name, decimal price, Department department, int quantity);
+        public int DeleteProduct(int id);
+
 
 
         //public List<Product> GetProducts(int id, string name, decimal price, Department department, int quantity);
         //public List<Product> GetProductsByCategory(int id, string name, decimal price, Department department, int quantity);
         //public List<Product> GetProductsByPriceRange(int id, string name, decimal price, Department department, int quantity);
         //public List<Product> GetProductsByGivenName(int id, string name, decimal price, Department department, int quantity);
-        //public int DeleteProduct(int id);
 
         //public int AddSales(decimal amount, DateTime date, int saleItem, int productId);
         //public List<Product> GetSales(int id, decimal amount,DateOnly date,SaleItem saleItem);

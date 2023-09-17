@@ -39,6 +39,17 @@ namespace MarketConsoleApp.Services.Concrete
             return product.Id;
         }
 
+        public int DeleteProduct(int id)
+        {
+            if (id < 0)
+                throw new Exception("Id cant be less than 0");
+            var product=_products.FirstOrDefault(x => x.Id == id);
+            if (product==null)
+                throw new Exception($"Product with Id {id} can not found");
+            _products.Remove(product); 
+
+            return id;
+        }
 
         public int UpdateProduct(int id, string name, decimal price, Department department, int quantity)
         {
@@ -50,8 +61,8 @@ namespace MarketConsoleApp.Services.Concrete
                     throw new Exception("Name can't be empty!");
                 if (price < 0)
                     throw new Exception("price cant be less than 0");
-                //if (string.isnullorempty(department.tostring()));
-                //throw new exception("department can't be empty!");
+            //if (string.IsNullOrEmpty(department.ToString())) ;
+            //throw new Exception("department can't be empty!");
                 if (quantity < 0)
                     throw new Exception("quantity cant be less than 0");
                 var product = _products.Find(x => x.Id == id);

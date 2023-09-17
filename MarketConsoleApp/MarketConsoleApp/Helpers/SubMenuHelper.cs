@@ -41,6 +41,7 @@ namespace MarketConsoleApp.Helpers
                         MenuService.UpdateProduct();
                         break;
                     case 3:
+                        MenuService.DeleteProduct();
                         break;
                     case 0:
                         break;

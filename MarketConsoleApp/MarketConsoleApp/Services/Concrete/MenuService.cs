@@ -24,6 +24,7 @@ namespace MarketConsoleApp.Services.Concrete
                 {
                     if (s.All(char.IsDigit))
                     {
+                        Console.WriteLine("The product can not be consist of only numbers or digits");
                         throw new FormatException();
                     }
                 }
@@ -48,7 +49,7 @@ namespace MarketConsoleApp.Services.Concrete
         }
 
 
-        public static void UpdateProduct() 
+        public static void UpdateProduct()
         {
             try
             {
@@ -62,7 +63,9 @@ namespace MarketConsoleApp.Services.Concrete
                 {
                     if (s.All(char.IsDigit))
                     {
+                        Console.WriteLine("The product can not be consist of only numbers or digits");
                         throw new FormatException();
+
                     }
                 }
                 Console.WriteLine("Enter product's new price:");
@@ -79,8 +82,27 @@ namespace MarketConsoleApp.Services.Concrete
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Error {ex.Message}"); 
+                Console.WriteLine($"Error {ex.Message}");
             }
+        }
+
+        public static void DeleteProduct()
+        {
+            try
+            {
+                Console.WriteLine("Please enter Id of product");
+                int id = int.Parse(Console.ReadLine()!);
+
+                marketService.DeleteProduct(id);
+                Console.WriteLine($"Product with ID:{id} was deleted!");
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Eror {ex.Message }");
+            }
+
         }
 
         //public static void AddSales()
